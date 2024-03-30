@@ -36,6 +36,3 @@ jobs:
     - name: Check if Docker build succeeded
       run: exit $DOCKER_BUILD_STATUS
       if: ${{ success() }}
-
-    - name: Fail if Docker build failed
-      run: exit 1
