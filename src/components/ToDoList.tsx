@@ -16,11 +16,43 @@ function ToDoList() {
 
     const sendForm = (event: any) => {
         event.preventDefault();
+        addTask();
     }
+
+    const deleteTask = (index: number) => {
+
+    };
+
+    const addTask = () => {
+        const taskName = inputName;
+        const taskDifficult = inputDifficult;
+        const taskType = inputType;
+
+        const newTask = {
+            "Name": taskName,
+            "Difficult": taskDifficult,
+            "Type": taskType
+        }
+
+        const newListTasks = [...tasks];
+        if(!newListTasks.includes(newTask)){
+            newListTasks.push(newTask);
+            setTasks(newListTasks);
+        }
+        setInputDifficult("");
+        setInputName("");
+        setInputType("");
+    };
+
+    const removeRandomTask = () => {
+        const indice = Math.floor(Math.random() * tasks.length);
+        deleteTask(indice);
+    };
 
     return (
         <div>
             <form onSubmit={sendForm}>
+
                 <div>
                     <label>Name: </label>
                     <input
@@ -72,6 +104,9 @@ function ToDoList() {
                         <div>
                             <label>Type: </label>
                             {task.Type}
+                        </div>
+                        <div>
+                            <button onClick={() => deleteTask(index)}>Delete</button>
                         </div>
                     </li>
                 ))}
