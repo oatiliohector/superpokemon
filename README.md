@@ -13,8 +13,8 @@ Install my-project with npm
 
 ```bash
   cd toDoList
-  podman -b imagem build .
-  podman run imagem
+  podman build -t toDoList .
+  podman run -p 3000:3000 toDoList
 ```
     
 ## Tech Stack
