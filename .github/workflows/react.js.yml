@@ -7,32 +7,21 @@ on:
     branches: [ "main" ]
 
 jobs:
-  Development:
-
+  ci:
+    name: Development
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: Install dependencies
-      run: npm ci
-    - name: Build
-      run: npm run build --if-present
-
-    - name: Build Docker image
-      run: docker build -t todolist-app .
-
-    - name: Check Docker build status
-      run: echo "::set-output name=DOCKER_BUILD_STATUS::$(echo $?)"
-
-    - name: Check if Docker build succeeded
-      run: exit $DOCKER_BUILD_STATUS
-      if: ${{ success() }}
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build --if-present
+      - name: Build Docker image
+        run: docker build -t todolist-app .
+      - name: Check Docker build status
+        run: echo "::set-output name=DOCKER_BUILD_STATUS::$(echo $?)"
+      - name: Check if Docker build succeeded
+        run: exit $DOCKER_BUILD_STATUS
+        if: ${{ success() }}
