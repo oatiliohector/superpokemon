@@ -20,7 +20,9 @@ function ToDoList() {
     }
 
     const deleteTask = (index: number) => {
-
+        const newListTasks = [...tasks];
+        newListTasks.splice(index, 1);
+        setTasks(newListTasks);
     };
 
     const addTask = () => {
@@ -44,7 +46,7 @@ function ToDoList() {
         setInputType("");
     };
 
-    const removeRandomTask = () => {
+    const deleteRandomTask = () => {
         const indice = Math.floor(Math.random() * tasks.length);
         deleteTask(indice);
     };
@@ -111,6 +113,7 @@ function ToDoList() {
                     </li>
                 ))}
             </div>
+            <button onClick={deleteRandomTask}>Delete Random Task</button>
         </div>
     )
 }
