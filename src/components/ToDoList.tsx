@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import WeatherAPI from "./WeatherAPI";
 function ToDoList() {
 
     const [tasks, setTasks] = useState([
@@ -106,6 +106,13 @@ function ToDoList() {
                         <div>
                             <label>Type: </label>
                             {task.Type}
+                        </div>
+                        <div>
+                            <label>City: </label>
+                            <div>
+                                <WeatherAPI/>
+                            </div>
+                            
                         </div>
                         <div>
                             <button onClick={() => deleteTask(index)}>Delete</button>
