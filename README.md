@@ -1,12 +1,9 @@
 # To Do List
 
-### To Do List made with React.js
+### To Do List Sayajin made with React.js
 
-###### This is a 1000 days challenge. 
-###### Every single day I'll build some project. 
-###### It can be a web project or a C++ project.
+##### Yes, I like Dragon Ball!
 
-### Day 1/1000
 ## Installation
 
 Install my-project with npm
